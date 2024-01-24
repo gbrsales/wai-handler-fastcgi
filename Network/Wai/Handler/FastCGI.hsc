@@ -4,10 +4,10 @@
 -----------------------------------------------------------------------------
 -- |
 -- Module      :  Network.Wai.Handler.FastCGI
--- Copyright   :  (c) Bjorn Bringert 2004-2005, (c) Lemmih 2006, (c) Michael Snoyman 2010
+-- Copyright   :  (c) Bjorn Bringert 2004-2005, (c) Lemmih 2006, (c) Michael Snoyman 2010, (c) Gabriele Sales 2024
 -- License     :  BSD-style (see the file libraries/network/LICENSE)
 --
--- Maintainer  :  michael@snoyman.com
+-- Maintainer  :  gbrsales@gmail.com
 -- Stability   :  experimental
 -- Portability :  non-portable (uses FFI)
 --
@@ -25,11 +25,7 @@ import Control.Monad    ( liftM, forever )
 import Data.Word (Word8)
 import Foreign          ( Ptr, castPtr, nullPtr, peekArray0
                         , throwIfNeg_, mallocBytes, free )
-#ifdef GHC_7_4
 import Foreign.C        (CInt(..), CString, CStringLen)
-#else
-import Foreign.C        (CInt, CString, CStringLen)
-#endif
 import Control.Exception (finally)
 import Foreign.Storable ( Storable (..) )
 
@@ -165,7 +161,7 @@ fcgxGetBuf h p c =
 -- * ByteString utilities
 --
 
--- | Data.ByteString.Lazy.hGetContentsN generalized to arbitrary 
+-- | Data.ByteString.Lazy.hGetContentsN generalized to arbitrary
 --   reading functions.
 buildByteString :: (Ptr Word8 -> Int -> IO Int) -> Int -> IO (Maybe BS.ByteString)
 buildByteString f k = do
@@ -188,5 +184,5 @@ environToTable arr = do
     return $ map splitEq ss
   where
     splitEq s =
-        let (a, b) = S.breakByte 61 s
+        let (a, b) = S.break (==61) s
          in (a, S.drop 1 b)
