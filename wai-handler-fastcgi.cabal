@@ -1,9 +1,9 @@
 name:            wai-handler-fastcgi
-version:         3.0.0.2
+version:         4.0.0.0
 license:         MIT
 license-file:    LICENSE
 author:          Michael Snoyman <michael@snoyman.com>
-maintainer:      Michael Snoyman <michael@snoyman.com>
+maintainer:      Gabriele Sales <gbrsales@gmail.com>
 synopsis:        Wai handler to fastcgi
 description:     API docs and the README are available at <http://www.stackage.org/package/wai-handler-fastcgi>.
 category:        Web
