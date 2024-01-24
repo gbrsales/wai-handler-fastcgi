@@ -8,7 +8,7 @@ synopsis:        Wai handler to fastcgi
 description:     API docs and the README are available at <http://www.stackage.org/package/wai-handler-fastcgi>.
 category:        Web
 stability:       stable
-cabal-version:   >= 1.6
+cabal-version:   >= 1.8
 build-type:      Configure
 extra-source-files: configure fastcgi.buildinfo.in README.md ChangeLog.md
 homepage:        http://www.yesodweb.com/book/web-application-interface
